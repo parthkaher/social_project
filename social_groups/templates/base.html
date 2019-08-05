@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Star Social</title>
+    <!-- Latest compiled and minified CSS -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+   
+
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+      <link rel="stylesheet" href="{% static 'simplesocial/css/master.css'%}">
+      <link rel="stylesheet" href="{% static 'css/master.css'%}">
+
+
+  </head>
+
+
+  <body style="background-color:beige">
+
+    <h1 style="color:blue;font-size: 50px"><center>SOCIAL GROUPS</center></h1>
+
+    <nav class="navbar  mynav" role="navigation" id="navbar">
+          <div class="container">
+          <div style="border:2px solid orange">
+            <a style="font-size:30px" class="navbar-brand mynav" href="{% url 'home' %}">Star Social</a>
+
+              <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                      <li><a style="font-size:30px" href="{% url 'posts:create' %}" class="btn btn-lg">Post</a></li>
+                      <li><a style="font-size:30px" href="{% url 'groups:all' %}" class="btn btn-lg">Groups</a></li>
+                      <li><a style="font-size:30px" href="{% url 'groups:create' %}" class="btn btn-lg">Create Group</a></li>
+                      <li><a style="font-size:30px" href="{% url 'accounts:logout' %}" class="btn btn-lg">Log out</a></li>
+                {% else %}
+                      <li><a style="font-size:30px" href="{% url 'groups:all' %}"class="btn btn-lg">Groups</a></li>
+                      <li><a style="font-size:30px" href="{% url 'accounts:login' %}" class="btn btn-lg">Log in</a></li>
+                      <li><a style="font-size:30px" href="{% url 'accounts:signup' %}" class="btn btn-lg">Sign up</a></li>
+                {% endif %}
+              </ul>
+
+
+
+
+          </div>
+
+        </nav>
+        <div class="container mycontent">
+          {% block content %}
+
+          {% endblock %}
+
+        </div>
+
+
+
+
+
+<canvas id="canvas"></canvas>
+
+
+
+  </body>
+</html>
